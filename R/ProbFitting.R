@@ -16,6 +16,7 @@
 #'
 #' @examples
 ProbFitting <- function(delta0,y,x.all,z.standard,z.all,missingTumorIndicator=NULL){
+  idx.drop = NULL
   if(is.null(missingTumorIndicator)==1){
     n <- nrow(y)
     M <- nrow(z.standard)
@@ -32,12 +33,18 @@ ProbFitting <- function(delta0,y,x.all,z.standard,z.all,missingTumorIndicator=NU
         idx <- 1:(ncol(y)-1)
         ###jdx is the potential subtype this missing person could be
         jdx <- apply(z.standard,1,function(t){all(t[idx]==y[i,idx+1])})
-        jdx <- which(jdx==T)
-        ####get the conditional probability
-        y_em[i,jdx] <- 1
+        if(sum(jdx)==0){
+          idx.drop = c(idx.drop,i)
+        }else{
+          jdx <- which(jdx==T)
+          ####get the conditional probability
+          y_em[i,jdx] <- 1
+        }
+
       }
     }
-    return(list(y_em=y_em))
+    return(list(y_em=y_em,missing.vec = NULL , missing.mat = NULL,complete.vec = NULL,
+                idx.drop = idx.drop))
   }else{
     n <- nrow(y)
     M <- nrow(z.standard)
@@ -57,7 +64,7 @@ ProbFitting <- function(delta0,y,x.all,z.standard,z.all,missingTumorIndicator=NU
         idx <- which(y[i,2:ncol(y)]!=missingTumorIndicator)
         ###jdx is the potential subtype this missing person could be
         jdx <- apply(z.standard,1,function(t){all(t[idx]==y[i,idx+1])})
-        if(sum(jdx)!=1){
+        if(sum(jdx)>1){
           missing.vec[index] <- i
           missing.mat[index,] <- jdx
           index <- index + 1
@@ -65,6 +72,8 @@ ProbFitting <- function(delta0,y,x.all,z.standard,z.all,missingTumorIndicator=NU
           ####get the conditional probability
           temp <- exp(x.all.inter[i,]%*%beta[,jdx])
           y_em[i,jdx] <- temp/sum(temp)
+        }else if(sum(jdx)==0){
+          idx.drop = c(idx.drop,i)
         }else{
           y_em[i,jdx] <- 1
         }
@@ -77,10 +86,11 @@ ProbFitting <- function(delta0,y,x.all,z.standard,z.all,missingTumorIndicator=NU
     complete.vec <- c(1:n)
     complete.vec <- complete.vec[!(complete.vec%in%missing.vec)]
 
-    return(list(y_em=y_em,missing.vec = missing.vec , missing.mat = missing.mat,complete.vec = complete.vec))
+    return(list(y_em=y_em,missing.vec = missing.vec , missing.mat = missing.mat,idx.drop = idx.drop))
   }
 
 }
+
 
 
 

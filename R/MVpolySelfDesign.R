@@ -1,4 +1,3 @@
-
 #' Title
 #'
 #' @param y
@@ -8,30 +7,38 @@
 #' @param saturated
 #' @param delta0
 #' @param cutoff
+#' @param x.self.design
+#' @param z.design
+#' @param missingTumorIndicator
+#' @param z.all
 #'
 #' @return
 #' @export
 #'
 #' @examples
-
-Mvpoly <- function(y,
-                   baselineonly,
-                   additive,
-                   pairwise.interaction,
-                   saturated,
-                   delta0 = NULL,
-                   cutoff = 10){
+MvpolySelfDesign <- function(y,
+                             x.self.design,
+                             z.design,
+                             baselineonly=NULL,
+                             additive=NULL,
+                             pairwise.interaction=NULL,
+                             saturated=NULL,
+                             missingTumorIndicator = 888,
+                             z.all=NULL,
+                             delta0 = NULL,
+                             cutoff=10){
   y.pheno.complete <- y
 
 
   freq.subtypes <- GenerateFreqTable(y.pheno.complete)
+  tumor.number <- ncol(y)-1
   y.case.control <- y[,1,drop=F]
-  y.tumor <- y[,2:ncol(y),drop=F]
+  y.tumor <- y[,2:(tumor.number+1),drop=F]
+  freq.subtypes <- GenerateFreqTable(y.pheno.complete)
   if(CheckControlTumor(y.case.control,y.tumor)==1){
     return(print("ERROR:The tumor characteristics for control subtypes should put as NA"))
   }
   tumor.names <- colnames(y.tumor)
-  tumor.number <- ncol(y)-1
   if(is.null(tumor.names)){
     tumor.names <- paste0(c(1:tumor.number))
   }
@@ -44,39 +51,47 @@ Mvpoly <- function(y,
   z.design.additive <- GenerateZDesignAdditive(tumor.character.cat,
                                                tumor.number,
                                                tumor.names,
-                                               freq.subtypes,
-                                               cutoff)
-  z.design.pairwise.interaction <- GenerateZDesignPairwiseInteraction(tumor.character.cat,
-                                                                      tumor.number,
-                                                                      tumor.names,
-                                                                      freq.subtypes,
-                                                                      cutoff)
-  z.design.saturated <- GenerateZDesignSaturated(tumor.character.cat,
-                                                 tumor.number,
-                                                 tumor.names,
-                                                 freq.subtypes,
-                                                 cutoff)
+                                               freq.subtypes)
+  if(tumor.number>=2){
+    z.design.pairwise.interaction <- GenerateZDesignPairwiseInteraction(tumor.character.cat,
+                                                                        tumor.number,
+                                                                        tumor.names,
+                                                                        freq.subtypes)
+    z.design.saturated <- GenerateZDesignSaturated(tumor.character.cat,
+                                                   tumor.number,
+                                                   tumor.names,
+                                                   freq.subtypes)
+
+  }else{
+    z.design.pairwise.interaction <- z.design.additive
+    z.design.saturated <- z.design.additive
+
+  }
   full.second.stage.names <- colnames(z.design.saturated)
   covar.names <- GenerateCovarName(baselineonly,
                                    additive,
                                    pairwise.interaction,
-                                   saturated)
-
-  z.all <- ZDesigntoZall(baselineonly,
-                         additive,
-                         pairwise.interaction,
-                         saturated,
-                         z.design.baselineonly,
-                         z.design.additive,
-                         z.design.pairwise.interaction,
-                         z.design.saturated)
+                                   saturated,
+                                   x.self.design = x.self.design)
+  z.all <- ZSelfDesigntoZall(x.self.design,
+                             baselineonly,
+                             additive,
+                             pairwise.interaction,
+                             saturated,
+                             z.design,
+                             z.design.baselineonly,
+                             z.design.additive,
+                             z.design.pairwise.interaction,
+                             z.design.saturated)
+  delta0 <-StartValueFunction(freq.subtypes,y.case.control,z.all)
+  z.standard <- z.design.additive[,-1,drop=F]
   if(is.null(delta0)){
     delta0 <-StartValueFunction(freq.subtypes,y.case.control,z.all)
   }
 
   #x.all has no intercept yet
   #we will add the intercept in C code
-  x.all <- GenerateXAll(y,baselineonly,additive,pairwise.interaction,saturated)
+  x.all <- GenerateSelfXAll(y,x.self.design,baselineonly,additive,pairwise.interaction,saturated)
   z.standard <- z.design.additive[,-1,drop=F]
 
 
@@ -156,18 +171,17 @@ Mvpoly <- function(y,
   covariance.delta <- solve(Mvpoly.result$infor_obs)
   loglikelihood <- Mvpoly.result$loglikelihood
   AIC <- Mvpoly.result$AIC
+  if(is.null(colnames(z.design))){
+    full.second.stage.names <- paste0("self_design_group",c(1:ncol(z.design)))
+  }else{
+    full.second.stage.names <- colnames(z.design)
+  }
   second.stage.mat <-
-    GenerateSecondStageMat(baselineonly,
-                           additive,
-                           pairwise.interaction,
-                           saturated,
-                           M,
-                           full.second.stage.names,
-                           covar.names,
-                           delta,
-                           z.design.additive,
-                           z.design.pairwise.interaction,
-                           z.design.saturated)
+    GenerateSelfSecondStageMat(x.self.design,
+                               z.design,
+                               M,
+                               full.second.stage.names,
+                               delta)
   ##take out the intercept from second stage parameters
 
   takeout.intercept.result <- TakeoutIntercept(delta,covariance.delta,

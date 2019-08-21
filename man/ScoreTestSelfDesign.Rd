@@ -4,8 +4,8 @@
 \alias{ScoreTestSelfDesign}
 \title{Title}
 \usage{
-ScoreTestSelfDesign(y, x, z.design = z.design, score.test.support = NULL,
-  missingTumorIndicator = NULL)
+ScoreTestSelfDesign(y, x, z.design = z.design,
+  score.test.support = NULL, missingTumorIndicator = NULL)
 }
 \arguments{
 \item{missingTumorIndicator}{}

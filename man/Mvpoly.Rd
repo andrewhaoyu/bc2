@@ -5,10 +5,10 @@
 \title{Title}
 \usage{
 Mvpoly(y, baselineonly, additive, pairwise.interaction, saturated,
-  delta0 = NULL)
+  delta0 = NULL, cutoff = 10)
 }
 \arguments{
-\item{saturated}{}
+\item{cutoff}{}
 }
 \description{
 Title

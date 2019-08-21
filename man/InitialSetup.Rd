@@ -4,11 +4,12 @@
 \alias{InitialSetup}
 \title{Title}
 \usage{
-InitialSetup(y.pheno.complete, baselineonly, additive, pairwise.interaction,
-  saturated, x.self.design = NULL, z.design = NULL)
+InitialSetup(y.pheno.complete, baselineonly, additive,
+  pairwise.interaction, saturated, x.self.design = NULL,
+  z.design = NULL, cutoff)
 }
 \arguments{
-\item{z.design}{}
+\item{cutoff}{}
 }
 \description{
 Title

@@ -4,7 +4,8 @@
 \alias{DisplaySecondStageTestResult}
 \title{Title}
 \usage{
-DisplaySecondStageTestResult(logodds, sigma, self.design = F, places = 5)
+DisplaySecondStageTestResult(logodds, sigma, self.design = F,
+  places = 5)
 }
 \arguments{
 \item{places}{}

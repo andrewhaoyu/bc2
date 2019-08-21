@@ -4,11 +4,11 @@
 \alias{EMScoreTestSupport}
 \title{Title}
 \usage{
-EMScoreTestSupport(y, baselineonly, additive, pairwise.interaction, saturated,
-  missingTumorIndicator)
+EMScoreTestSupport(y, baselineonly, additive, pairwise.interaction,
+  saturated, missingTumorIndicator, cutoff = 10)
 }
 \arguments{
-\item{missingTumorIndicator}{}
+\item{cutoff}{}
 }
 \description{
 Title

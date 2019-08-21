@@ -4,7 +4,8 @@
 \alias{TakeoutIntercept}
 \title{Title}
 \usage{
-TakeoutIntercept(delta, covariance.delta, M, tumor.names, z.all, covar.names)
+TakeoutIntercept(delta, covariance.delta, M, tumor.names, z.all,
+  covar.names)
 }
 \arguments{
 \item{covar.names}{}

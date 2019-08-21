@@ -4,8 +4,8 @@
 \alias{CompleteCasesScoreTestSupport}
 \title{Title}
 \usage{
-CompleteCasesScoreTestSupport(y, baselineonly, additive, pairwise.interaction,
-  saturated)
+CompleteCasesScoreTestSupport(y, baselineonly, additive,
+  pairwise.interaction, saturated)
 }
 \arguments{
 \item{missingTumorIndicator}{}

@@ -5,8 +5,9 @@
 \title{Title}
 \usage{
 ZSelfDesigntoZallnew(x.self.design, x.self.design2, baselineonly, additive,
-  pairwise.interaction, saturated, z.design, z.design2, z.design.baselineonly,
-  z.design.additive, z.design.pairwise.interaction, z.design.saturated)
+  pairwise.interaction, saturated, z.design, z.design2,
+  z.design.baselineonly, z.design.additive, z.design.pairwise.interaction,
+  z.design.saturated)
 }
 \arguments{
 \item{z.design.saturated}{}

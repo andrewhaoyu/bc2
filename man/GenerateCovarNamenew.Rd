@@ -4,8 +4,8 @@
 \alias{GenerateCovarNamenew}
 \title{Title}
 \usage{
-GenerateCovarNamenew(baselineonly, additive, pairwise.interaction, saturated,
-  x.self.design, x.self.design2)
+GenerateCovarNamenew(baselineonly, additive, pairwise.interaction,
+  saturated, x.self.design, x.self.design2)
 }
 \arguments{
 \item{x.self.design2}{}

@@ -1,0 +1,512 @@
+delta0 <-StartValueFunction(freq.subtypes,y.case.control,z.all)
+#x.all has no intercept yet
+#we will add the intercept in C code
+x.all <- GenerateXAll(y,baselineonly,main.effect,pairwise.interaction,saturated)
+library(bc2)
+document()
+library(bc2)
+ls
+library(bc2)
+ls
+ls
+cd
+quit()
+library(bc2)
+document()
+library(devtools)
+document()
+library(bc2)
+document(0)
+document()
+library(bc2)
+document()
+library(bc2)
+document()
+shiny::runApp('~/GoogleDrive/try')
+install_github("andrewhaoyu/bc2", args = c('--library="/home/zhangh24/R/x86_64-pc-linux-gnu-library/3.4"'))
+library(bc2)
+#install_github("andrewhaoyu/bc2")
+library(bc2)
+runApp('~/GoogleDrive/try')
+#install_github("andrewhaoyu/bc2")
+library(bc2)
+runApp('~/GoogleDrive/try')
+library(bc2)
+document()
+document()
+library(devtools)
+document()
+library(bc2)
+document()
+library(bc2)
+GenerateCompleteYPheno()
+GenerateCompleteYPheno
+GenerateZDesignMainEffect
+library(bc2)
+library(bc2)
+library(bc2)
+EMmvpoly
+document(0)
+document()
+library(bc2)
+library(bc2)
+document()
+library(bc2)
+library(bc2)
+GenerateZDesignAdditive
+library(bc2)
+document()
+library(bc2)
+rm(list=ls())
+library(devtools)
+library(bc2)
+library(bc2)
+squarex(2)
+document()
+library(bc2)
+squarex(2)
+devtools::install()
+library(bc2)
+devtools::install()
+library(bc2)
+squarex(2)
+document()
+square(x)
+squarex(x)
+squarex(2)
+library(bc2)
+squarex(2)
+library(devtools)
+document()
+library(bc2)
+library(bc2)
+document()
+library(bc2)
+EMStep
+document9
+document（
+document()
+library(bc2)
+library(bc2)
+library(bc2)
+square(x)
+square2(x)
+squarex(2)
+library(qqman)
+meta_com_shared_common = meta_com_shared_1p
+idx <- which((gwasresult$CHR==20&gwasresult$BP==11502618)|
+(gwasresult$CHR==20&gwasresult$BP==39248265)|
+(gwasresult$CHR==20&gwasresult$BP==52297165)|
+(gwasresult$CHR==5&gwasresult$BP==67441026)|
+(gwasresult$CHR==15&gwasresult$BP==67408298)|
+(gwasresult$CHR==17&gwasresult$BP==7571752)|
+(gwasresult$CHR==2&gwasresult$BP==67902524))
+highlight <- gwasresult[idx,1]
+ls()
+library(bc2)
+rm(list=ls())
+library(bc2)
+ls()
+EMmvpoly()
+EMmvpoly
+rm(list=ls())
+detach("package:bc2", unload=TRUE)
+library(bc2)
+documenet
+document
+document()
+document()
+library(bc2)
+library(bc2)
+getwd()
+?format
+format(1:10)
+format(1:10,trim=T)
+as.numeric(format(c(1.01,2.23,3.39),scientific=T,digits=2))
+as.numeric(format(c(1.01,2.23,3.39),scientific=T,digits=3))
+as.numeric(format(c(1.01,2.23,3.39),scientific=T,digits=4))
+as.numeric(format(c(1e-08,2.23E-07,3.39e-06),scientific=T,digits=4))
+formatC(123.45, mode = "double", format = "d")
+formatC(123.45, mode = "double", format = "d")
+x <- 10 ^ (0:4)
+format(x)
+format(x, trim = TRUE)
+format(1:10)
+format(1:10, trim = TRUE)
+format(2^31-1)
+format(2^31-1, scientific = TRUE)
+?round
+p.value.IHT
+dim(sigma)
+IndividualHeterTest <- function(logodds,sigma){
+sigma <- as.matrix(sigma)
+var.logodds <- diag(sigma)
+df <- length(logodds)
+z <- logodds/sqrt(var.logodds)
+p.value.IHT <- PvalueFunction(z)
+places = 3
+####round p.value under scientific accuracy
+accuracy <- floor(-log(p.value.IHT))+places
+p.value.IHT <- round(p.value.IHT*10^(accuracy))/(10^accuracy)
+return(p.value.IHT)
+}
+PvalueFunction <- function(z){
+result <- NULL
+for(i in 1:length(z)){
+result <- c(result,2*(pnorm(-abs(z[i]))))
+}
+places = 3
+####round p.value under scientific accuracy
+accuracy <- floor(-log10(result))+places
+p.value.IHT <- round(result*10^(accuracy))/(10^accuracy)
+return(result)
+}
+PvalueFunction <- function(z){
+result <- NULL
+for(i in 1:length(z)){
+result <- c(result,2*(pnorm(-abs(z[i]))))
+}
+places = 3
+####round p.value under scientific accuracy
+accuracy <- floor(-log10(result))+places
+p.value.IHT <- round(result*10^accuracy)/(10^accuracy)
+return(result)
+}
+source('~/GoogleDrive/bc2/R/GenerateSecondStageTest.R', echo=TRUE)
+source('~/GoogleDrive/bc2/R/GenerateSecondStageTest.R', echo=TRUE)
+document()
+library(devtools)
+library(bc2)
+document()
+z.all
+z_standard
+z.design.additive
+head(additive)
+additive
+y = y.pheno.mis1
+z.design.saturated
+?matrix
+###delta represent second stage parameters
+delta <- EM.result$delta
+covar.number
+1+M*(0:length(covar.names)))
+1+M*(0:length(covar.names))
+rm(list=ls())
+document()
+library(bc2)
+document()
+document()
+document()
+document()
+document()
+document()
+document()
+library(bc2)
+library(bc2)
+document()
+library(bc2)
+document()
+(2017-1995)+18
+ls()
+library(bc2)
+qnorm(0.05)
+qnorm(0.8)
+qnorm(0.2)
+(1.96+0.84)/(0.3*sqrt(2))
+((1.96+0.84)/(0.3*sqrt(2)))^2
+qrnom(0.05)
+qnrom(0.05)
+qnorm(0.05)
+qrnorm(0.8)
+qnorm(0.8)
+1.645+0.84
+(1.645+0.84)/(0.3*sqrt(2))
+((1.645+0.84)/(0.3*sqrt(2)))^2
+covar.names <- colnames(x)
+if(is.vector(x)){
+covar.names <- "noname"
+}
+source('~/GoogleDrive/bc2/R/GenerateSelfSecondStageMat.R', echo=TRUE)
+library(bc2)
+document()
+EMmvpolySelfDesign
+document()
+library(bc2)
+library(bc2)
+document()
+z.design.baselineonly
+M = 1
+cutoff <- 10
+library(bc2)
+document()
+library(bc2)
+document()
+#'
+#' @param beta
+#' @param sigma
+#' @param M
+#' @param first.stage.mat
+#'
+#' @return
+#' @export
+#'
+#' @examples
+FirstStageTest <- function(beta,sigma,M,first.stage.mat){
+self.design.number <- ncol(first.stage.mat)
+beta <- beta[(1:(M*self.design.number)]
+logodds <- beta
+#'
+#' @param beta
+#' @param sigma
+#' @param M
+#' @param first.stage.mat
+#'
+#' @return
+#' @export
+#'
+#' @examples
+FirstStageTest <- function(beta,sigma,M,first.stage.mat){
+self.design.number <- ncol(first.stage.mat)
+beta <- beta[(1:(M*self.design.number)]
+#'
+#' @param beta
+#' @param sigma
+#' @param M
+#' @param first.stage.mat
+#'
+#' @return
+#' @export
+#'
+#' @examples
+FirstStageTest <- function(beta,sigma,M,first.stage.mat){
+M <- nrow(first.stage.mat)
+self.design.number <- ncol(first.stage.mat)
+#beta <- beta[(1:(M*self.design.number)]
+#sigma <- sigma[(1:(M*self.design.number),(1:(M*self.design.number)]
+logodds <- beta
+###take out intercept
+all.covar.names <- colnames(first.stage.mat)[-1]
+all.subtypes.names <- row.names(first.stage.mat)
+first.stage.mat <- first.stage.mat[,-1]
+if(is.vector(first.stage.mat)){
+first.stage.mat <- matrix(first.stage.mat,ncol=1)
+}
+ind.delta <- 0
+ind.covar <- 0
+var.logodds <- diag(sigma)
+logodds.low <- logodds-1.96*sqrt(var.logodds)
+logodds.high <- logodds+1.96*sqrt(var.logodds)
+odds <- exp(logodds)
+odds.low <- exp(logodds.low)
+odds.high <- exp(logodds.high)
+places <- 2
+odds <- round(odds,places)
+odds.low <- round(odds.low,places)
+odds.high <- round(odds.high,places)
+p.individual.heter <- IndividualHeterTest(logodds,sigma)
+covar.names <- NULL
+subtypes.names <- NULL
+for(i in 1:ncol(first.stage.mat)){
+for(j in 1:nrow(first.stage.mat)){
+if(is.na(first.stage.mat[j,i])==F){
+covar.names = c(covar.names,all.covar.names[i])
+subtypes.names =
+c(subtypes.names,all.subtypes.names[j])
+}
+}
+}
+result <- data.frame(CovarName = covar.names,
+Subtypes = subtypes.names,
+odds,
+odds.low,
+odds.high,
+p.individual.heter)
+colnames(result) <- c("Covariate","Subtypes",
+"OddsRatio",
+"OddsRatio(95%CI low)",
+"OddsRatio(95%CI high)",
+"Pvalue")
+return(result)
+}
+library(bc2)
+document()
+library(bc2)
+document()
+shiny::runApp('~/GoogleDrive/try')
+runApp('~/GoogleDrive/try')
+runApp('~/GoogleDrive/try')
+runApp('~/GoogleDrive/try')
+runApp('~/GoogleDrive/try')
+library(bc2)
+document()
+library(bc2)
+document()
+session_info()
+session_info(bc2)
+session_info("bc2")
+?install_github
+p.value.GTH <- davies(GTH.stat,lamda,lim = 2000000,acc=1e-9)[[3]]
+?davies
+library(bc2)
+document()
+library(bc2)
+library(bc2)
+document()
+document()
+library(bc2)
+document()
+library(bc2)
+library(roxygen2)
+document()
+document()
+library(bc2)
+document()
+?bc2
+library(bc2)
+?bc2
+?EMmvpoly
+library(bc2)
+document()
+devtools::use_package()
+document()
+library(bc2)
+library(bc2)
+library(bc2)
+library(bc2)
+document()
+source('~/GoogleDrive/bc2/R/ScoreTestSupportSelfDesign.R', echo=TRUE)
+library(bc2)
+document()
+document()
+library(bc2)
+document()
+library(bc2)
+library(bc2)
+document()
+181-9
+181-9
+181-7
+library(bc2)
+convert
+library(devtools)
+document()
+library(bc2)
+library(bc2)
+document(\)
+document()
+library(bc2)
+document()
+library(devtools)
+document()
+?install_github
+library(bc2)
+git status
+document()
+library(bc2)
+document()
+?install_github
+library(devtools)
+?install_github
+library(bc2)
+document()
+24*6
+library(bc2)
+document()
+document()
+document()
+library(bc2)
+lsos)
+lsos()
+rm(list=ls())
+library(bc2)
+lsos()
+a = 1
+lsos()
+library(bc2)
+document()
+library(bc2)
+document()
+num <- 22339
+size = 100
+split.all <- split(1:num,cut(1:num,size))
+split.all[[1]]
+split.all[[100]]
+ind = 3
+split.all <- split(1:num,cut(1:num,size))
+temp <- split.all[ind]
+start <- temp[1]
+end <- temp[length(temp)]
+start
+end
+ind
+temp <- split.all[[ind]]
+start <- temp[1]
+end <- temp[length(temp)]
+start
+end
+source('~/GoogleDrive/bc2/R/startend.R', echo=TRUE)
+document()
+library(bc2)
+10^7/10000
+1000/20
+1000/10
+document()
+library(devtools)
+document()
+library(devtools)
+library(roxygen2)
+document()
+document()
+library(devtools)
+document()
+document()
+library(roxygen2)
+document()
+library(devtools)
+document()
+?roxygen2
+?document()
+82-28
+97-54
+750*0.119
+750*0.21
+library(bc2)
+library(bc2)
+document()
+library(roxygen2)
+document()
+library(devtools)
+document()
+document()
+document()
+library(devtools)
+document()
+library(devtools)
+document()
+document()
+32+19
+342/19
+18*51
+document()
+library(devtools)
+document()
+document()
+library(bc2)
+document()
+document()
+document()
+document()
+library(devtools)
+document()
+library(devtools)
+document()
+library(devtools)
+document()
+document()
+library(devtools)
+document()
+document()
+library(devtools)
+document()
+library(devtools)
+document()

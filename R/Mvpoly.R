@@ -84,7 +84,7 @@ Mvpoly <- function(y,
   #x.all has no intercept yet
   #we will add the intercept in C code
   x.all <- GenerateXAll(y,baselineonly,additive,pairwise.interaction,saturated)
-  z.standard <- z.design.additive[,-1,drop=F]
+
 
 
   fit.result <- ProbFitting(delta0,y,x.all,z.standard,z.all,missingTumorIndicator=888)
@@ -100,7 +100,7 @@ Mvpoly <- function(y,
 
 
   x.all <- as.matrix(x.all)
-  z.standard <- z.design.additive[,-1]
+  z.standard <- z.design.additive[,-1,drop=F]
   M <- as.integer(nrow(z.standard))
 
   tol <- as.numeric(1e-04)

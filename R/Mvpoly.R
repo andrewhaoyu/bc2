@@ -68,7 +68,7 @@ Mvpoly <- function(y,
                                    additive,
                                    pairwise.interaction,
                                    saturated)
-
+  z.standard <- z.design.additive[,-1,drop=F]
   z.all <- ZDesigntoZall(baselineonly,
                          additive,
                          pairwise.interaction,

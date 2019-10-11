@@ -87,7 +87,7 @@ Mvpoly <- function(y,
 
 
 
-  fit.result <- ProbFitting(delta0,y,x.all,z.standard,z.all,missingTumorIndicator=888)
+  fit.result <- ProbFitting(delta0,y,x.all,z.standard,z.all,missingTumorIndicator=NULL)
   y.fit <- fit.result[[1]]
   idx.drop = fit.result[[4]]
 

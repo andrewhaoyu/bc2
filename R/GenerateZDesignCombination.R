@@ -2,6 +2,7 @@
 #'
 #' @param y the phenotype file. The first column is the case control disease status. The other columns are the tumor characteristics status
 
+#' @return
 #' @export
 
 GenerateZDesignCombination <- function(y,

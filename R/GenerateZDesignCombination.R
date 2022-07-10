@@ -14,11 +14,12 @@ GenerateZDesignCombination <- function(y,
   y.pheno.complete <- y[-missing.data.vec,,drop=F]
   initial.set <- InitialSetup(y.pheno.complete,
                               baselineonly=NULL,
-                              additive,
-                              pairwise.interaction,
-                              saturated,
+                              additive=NULL,
+                              pairwise.interaction=NULL,
+                              saturated=NULL,
                               cutoff =cutoff
   )
+
 
   z.design.additive = initial.set[[5]]
   z.design.pairwise.interaction = initial.set[[6]]

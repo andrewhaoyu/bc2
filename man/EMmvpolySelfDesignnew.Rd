@@ -4,10 +4,20 @@
 \alias{EMmvpolySelfDesignnew}
 \title{Title}
 \usage{
-EMmvpolySelfDesignnew(y, x.self.design, z.design, x.self.design2,
-  z.design2, baselineonly = NULL, additive = NULL,
-  pairwise.interaction = NULL, saturated = NULL,
-  missingTumorIndicator = 888, z.all = NULL, delta0 = NULL)
+EMmvpolySelfDesignnew(
+  y,
+  x.self.design,
+  z.design,
+  x.self.design2,
+  z.design2,
+  baselineonly = NULL,
+  additive = NULL,
+  pairwise.interaction = NULL,
+  saturated = NULL,
+  missingTumorIndicator = 888,
+  z.all = NULL,
+  delta0 = NULL
+)
 }
 \arguments{
 \item{delta0}{}

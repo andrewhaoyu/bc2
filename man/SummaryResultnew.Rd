@@ -4,10 +4,25 @@
 \alias{SummaryResultnew}
 \title{Title}
 \usage{
-SummaryResultnew(model.result, baselineonly, additive,
-  pairwise.interaction, saturated, z.standard, covar.names, delta,
-  z.design.additive, z.design.pairwise.interaction, z.design.saturated,
-  tumor.names, z.all, x.self.design, z.design, x.self.design2, z.design2)
+SummaryResultnew(
+  model.result,
+  baselineonly,
+  additive,
+  pairwise.interaction,
+  saturated,
+  z.standard,
+  covar.names,
+  delta,
+  z.design.additive,
+  z.design.pairwise.interaction,
+  z.design.saturated,
+  tumor.names,
+  z.all,
+  x.self.design,
+  z.design,
+  x.self.design2,
+  z.design2
+)
 }
 \arguments{
 \item{z.design}{}

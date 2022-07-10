@@ -4,8 +4,12 @@
 \alias{DisplayMixedScoreTestResult}
 \title{Title}
 \usage{
-DisplayMixedScoreTestResult(score.baseline, infor.baseline, score.casecase,
-  infor.casecase)
+DisplayMixedScoreTestResult(
+  score.baseline,
+  infor.baseline,
+  score.casecase,
+  infor.casecase
+)
 }
 \arguments{
 \item{infor.casecase}{}

@@ -5,15 +5,23 @@
 \alias{GenerateSelfSecondStageMat}
 \title{Title}
 \usage{
-GenerateSelfSecondStageMat(x.self.design, z.design, M,
-  full.second.stage.names, delta)
+GenerateSelfSecondStageMat(
+  x.self.design,
+  z.design,
+  M,
+  full.second.stage.names,
+  delta
+)
 
-GenerateSelfSecondStageMat(x.self.design, z.design, M,
-  full.second.stage.names, delta)
+GenerateSelfSecondStageMat(
+  x.self.design,
+  z.design,
+  M,
+  full.second.stage.names,
+  delta
+)
 }
 \arguments{
-\item{delta}{}
-
 \item{delta}{}
 }
 \description{

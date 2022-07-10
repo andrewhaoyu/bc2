@@ -4,9 +4,17 @@
 \alias{InitialSetupnew}
 \title{Title}
 \usage{
-InitialSetupnew(y.pheno.complete, baselineonly, additive,
-  pairwise.interaction, saturated, x.self.design, z.design, x.self.design2,
-  z.design2)
+InitialSetupnew(
+  y.pheno.complete,
+  baselineonly,
+  additive,
+  pairwise.interaction,
+  saturated,
+  x.self.design,
+  z.design,
+  x.self.design2,
+  z.design2
+)
 }
 \arguments{
 \item{z.design2}{}

@@ -13,7 +13,7 @@ GenerateZDesignCombination <- function(y,
   missing.data.vec <- GenerateMissingPosition(y,missingTumorIndicator)
   y.pheno.complete <- y[-missing.data.vec,,drop=F]
   initial.set <- InitialSetup(y.pheno.complete,
-                              baselineonly,
+                              baselineonly=NULL,
                               additive,
                               pairwise.interaction,
                               saturated,

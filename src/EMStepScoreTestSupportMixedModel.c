@@ -1072,11 +1072,13 @@ static void Free_Mem(double * XX,double **tXXZ,int Nparm,double**X,int N,
 
 }
 
+
+
 void EMStepScoreTestSupportMixedModel(deltai, pNparm, Y, Xvec, ZallVec,Zallnr,Zallnc, pN, pM, pNcov, pNiter, ptol,ptolMaxstep,
                         pDEBUG, ret_rc, ret_delta,ret_info,ret_p,missing_vec,
                         missing_Mat_vec,pmissing_number,ret_Inv_info_vec,YminusP,W_obs, WXZ_vec,WX_vec)
 double *deltai, *Y, *Xvec, *ptol, *ret_delta,*ret_info,*ret_p,*ZallVec,*missing_vec,
-*missing_Mat_vec,*ptolMaxstep, *ret_Inv_info_vec, *YminusP, *W_obs;
+*missing_Mat_vec,*ptolMaxstep, *ret_Inv_info_vec, *YminusP, *W_obs, *WXZ_vec, *WX_vec;
 int *pNparm, *pN, *pM, *pNcov, *pNiter, *ret_rc, *pDEBUG,*Zallnr,*Zallnc,*pmissing_number;
 
 {

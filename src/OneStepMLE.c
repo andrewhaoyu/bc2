@@ -147,7 +147,6 @@ int m1_nr, m1_nc, m2_nc;
 
 
 
-
   /* Function to compute Xy for matrix X and vector */
   static void X_y(X, nr, nc, y, ret)
 double **X, *y, *ret;
@@ -585,8 +584,9 @@ double **ret;
 } /* END: rmatTranspose */
 
   /* Inverse of symmetric positive definite matrix */
+
   static int symPosMatInv(mat, n, ret)
-double **mat;
+  double **mat;
 int n;
 double **ret;
 {
@@ -597,32 +597,71 @@ double **ret;
   diag = (double *) dVec_alloc(n, 1, 0.0);
 
   /* Get cholesky lower triangle */
-    i = symPosFactor(mat, n, L, diag);
-    if (i) {
-      free(diag);
-      matrix_free((void **) L, n);
-      return(i);
-    }
+  i = symPosFactor(mat, n, L, diag);
+  if (i) {
+    free(diag);
+    matrix_free((void **) L, n);
+    return(i);
+  }
 
-    /* Get the lower inverse */
-      Linv = dMat_alloc(n, n, 1, 0.0);
-      symPosFacInv(L, diag, n, Linv);
-      free(diag);
+  /* Get the lower inverse */
+  Linv = dMat_alloc(n, n, 1, 0.0);
+  symPosFacInv(L, diag, n, Linv);
+  free(diag);
 
-      /* Get the transpose of Linv */
-        matTranspose(Linv, n, L);
+  /* Get the transpose of Linv */
+  matTranspose(Linv, n, L);
 
-      /* Inverse is t(L^-1)(L^-1) */
-        matrixMult(L, n, n, Linv, n, ret);
+  /* Inverse is t(L^-1)(L^-1) */
+  matrixMult(L, n, n, Linv, n, ret);
 
-      matrix_free((void **) L, n);
-      matrix_free((void **) Linv, n);
+  matrix_free((void **) L, n);
+  matrix_free((void **) Linv, n);
 
-      return(0);
+  return(0);
 
 } /* END: symPosMatInv */
 
+  /* Function to compute the inverse of a covariance matrix */
+  /* Returned inverse */
+  static  int cov_inv(cov, n, inv)
+  double **cov;
+int n;
+double **inv; /* Returned inverse */
+{
+  double cc, a, b, d;
+  int ret;
 
+  switch (n) {
+  case 0:
+    Rprintf("\nERROR: dimension of covariance matrix is 0\n");
+    exit(1);
+  case 1:
+    a = cov[0][0];
+    if (fabs(a) < ALMOST_ZERO) return(ERROR_SINGULAR_MATRIX);
+    inv[0][0] = 1.0/a;
+    break;
+  case 2:
+    a  = cov[0][0];
+    b  = cov[0][1];
+    d  = cov[1][1];
+    cc = a*d - b*b;
+    if (fabs(cc) < ALMOST_ZERO) return(ERROR_SINGULAR_MATRIX);
+    cc = 1.0/cc;
+    inv[0][0] = d*cc;
+    inv[0][1] = -b*cc;
+    inv[1][0] = -b*cc;
+    inv[1][1] = a*cc;
+    break;
+  default:
+    ret = symPosMatInv(cov, n, inv);
+  if (ret) return(ret);
+  break;
+  } /* END: switch */
+
+  return(0);
+
+} /* END: cov_inv */
 
   /*calculate the weighted matrix for MLE*/
   /* W is a long vector with length N*(M+1)*M/2*/
